@@ -1,6 +1,10 @@
 name: Docker Actions
 
-on: [push]
+#on: [push] #old trigger
+
+on:
+  pull_request:
+    types: [labeled]
 
 jobs:
   action:
@@ -11,5 +15,10 @@ jobs:
 
       - name: hello-action
         uses: ./.github/actions/hello-world
-        with:
-          thirdGreeting: "mbarrier"
+      
+      - name: meow
+        uses: ./.github/actions/cat-facts
+
+# comment out old code
+#        with:
+#          thirdGreeting: "mbarrier"
